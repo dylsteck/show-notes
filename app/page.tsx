@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ToastProvider } from "@/components/ui/toast";
-import { Trash2, Link as LinkIcon, Share, Plus } from 'lucide-react';
+import { Trash2, Link as LinkIcon, Share, Plus, CopyIcon } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import { useToast } from '@/hooks/use-toast';
 
@@ -140,16 +140,16 @@ export default function Home() {
                 <li
                   key={link.id}
                   className={cn(
-                    "p-2 rounded-lg flex items-center justify-between border hover:bg-gray-100 transition",
+                    "p-2 rounded-lg flex items-center justify-between border hover:bg-gray-100 transition cursor-pointer",
                     selectedLink?.id === link.id ? 'bg-blue-50 border-blue-300' : 'border-gray-200'
                   )}
                   onClick={() => setSelectedLink(link)}
                 >
                   <div className="flex-1">
-                    <p className="text-sm font-semibold truncate">{link.title}</p>
-                    <p className="text-sm text-gray-500 truncate">{link.url}</p>
+                    <p className="text-sm font-semibold truncate max-w-[75%]">{link.title}</p>
+                    <p className="text-sm text-gray-500 truncate max-w-[75%]">{link.url}</p>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex flex-row gap-0 items-center space-x-0">
                     <Button
                       variant="ghost"
                       size="icon"
@@ -158,7 +158,7 @@ export default function Home() {
                         duplicateLink(link);
                       }}
                     >
-                      <LinkIcon className="h-4 w-4" />
+                      <CopyIcon className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="ghost"
