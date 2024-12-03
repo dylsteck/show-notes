@@ -133,6 +133,13 @@ export default function Home() {
             >
               <Share className="h-4 w-4" />
             </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => copyToClipboard(links.map((l) => `${l.title}: ${l.url}`).join('\n'))}
+            >
+              <CopyIcon className="h-4 w-4" />
+            </Button>
           </div>
           <div className="flex-1 overflow-y-auto">
             <ul className="space-y-2 p-4">
@@ -145,11 +152,11 @@ export default function Home() {
                   )}
                   onClick={() => setSelectedLink(link)}
                 >
-                  <div className="flex-1">
-                    <p className="text-sm font-semibold truncate max-w-[75%]">{link.title}</p>
-                    <p className="text-sm text-gray-500 truncate max-w-[75%]">{link.url}</p>
+                  <div className="flex-1 overflow-hidden">
+                    <p className="text-sm font-semibold truncate">{link.title}</p>
+                    <p className="text-sm text-gray-500 truncate">{link.url}</p>
                   </div>
-                  <div className="flex flex-row gap-0 items-center space-x-0">
+                  <div className="flex flex-row items-center space-x-0">
                     <Button
                       variant="ghost"
                       size="icon"
